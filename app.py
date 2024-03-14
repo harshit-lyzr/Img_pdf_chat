@@ -51,7 +51,7 @@ remove_existing_files(data_directory)
 data_image_dir = "data/image"
 os.makedirs(data_image_dir, exist_ok=True)
 remove_existing_files(data_image_dir)
-uploaded_file = st.file_uploader("Choose PDF file", type=["pdf","jpeg","png"])
+uploaded_file = st.file_uploader("Choose PDF file", type=["pdf"])
 print(uploaded_file)
 
 if uploaded_file is not None:
