@@ -2,12 +2,17 @@ import base64
 import streamlit as st
 import os
 import fitz
+import openai
 from openai import OpenAI
 from io import BytesIO
 from PIL import Image
 import tempfile
 from lyzr import ChatBot
 import shutil
+from dotenv import load_dotenv
+
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 st.title("Lyzr Image and Text PDF Chatbot")
 def extract_images(path, output_dir):
@@ -45,9 +50,8 @@ remove_existing_files(data_directory)
 
 data_image_dir = "data/image"
 os.makedirs(data_image_dir, exist_ok=True)
-
 remove_existing_files(data_image_dir)
-uploaded_file = st.file_uploader("Choose PDF file", type=["pdf"])
+uploaded_file = st.file_uploader("Choose PDF file", type=["pdf","jpeg","png"])
 print(uploaded_file)
 
 if uploaded_file is not None:
